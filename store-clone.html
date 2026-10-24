@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F5F5F7',
+            ink: '#1D1D1F',
+            muted: '#6E6E73',
+            accent: '#0066CC',
+            rose: '#E8438C',
+            peach: '#F0875A'
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Helvetica Neue"', 'Arial', 'sans-serif']
+          },
+          boxShadow: {
+            card: '0 1px 2px rgba(0,0,0,0.04), 0 10px 24px -12px rgba(0,0,0,0.08)',
+            cardHover: '0 2px 4px rgba(0,0,0,0.05), 0 22px 40px -18px rgba(0,0,0,0.18)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { background: #F5F5F7; color: #1D1D1F; -webkit-font-smoothing: antialiased; }
+    .headline-gradient {
+      background: linear-gradient(90deg, #E8438C 0%, #F0875A 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    /* Top wash: pink at centre, fading to warm yellow at the edges */
+    .lotus-glow {
+      background:
+        radial-gradient(45% 55% at 50% 0%, rgba(232,67,140,0.30) 0%, rgba(232,67,140,0) 70%),
+        radial-gradient(60% 40% at 15% 0%, rgba(250,200,90,0.28) 0%, rgba(250,200,90,0) 70%),
+        radial-gradient(60% 40% at 85% 0%, rgba(250,200,90,0.28) 0%, rgba(250,200,90,0) 70%),
+        linear-gradient(180deg, #FBF3F4 0%, #F5F5F7 100%);
+    }
+    /* Soft orb that stands in for the hero emblem */
+    .hero-orb {
+      background: radial-gradient(circle at 40% 35%, #FFFFFF 0%, #FBD3E4 35%, #F7A6C7 60%, rgba(247,166,199,0) 72%);
+      filter: blur(2px);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Global nav -->
+  <header class="sticky top-0 z-50 h-11 bg-white/80 backdrop-blur-md">
+    <nav class="mx-auto flex h-full max-w-[1280px] items-center justify-between px-4 text-[12px] text-ink" aria-label="Global">
+      <a href="#top" class="grid h-8 w-8 place-items-center rounded-md outline-none transition-transform duration-300 hover:scale-110 focus-visible:ring-2 focus-visible:ring-accent active:scale-95" aria-label="Home">
+        <span class="h-4 w-4 rounded-sm bg-ink"></span>
+      </a>
+      <ul class="hidden items-center gap-6 md:flex">
+        <li><a href="#top" class="rounded-sm text-ink/80 transition-[color,transform] duration-300 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">Store</a></li>
+        <li><a href="#top" class="rounded-sm text-ink/80 transition-[color,transform] duration-300 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">Category A</a></li>
+        <li><a href="#top" class="rounded-sm text-ink/80 transition-[color,transform] duration-300 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">Category B</a></li>
+        <li><a href="#top" class="rounded-sm text-ink/80 transition-[color,transform] duration-300 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">Category C</a></li>
+        <li><a href="#top" class="rounded-sm text-ink/80 transition-[color,transform] duration-300 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">Support</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <button type="button" aria-label="Search" class="grid h-8 w-8 place-items-center rounded-full transition-[transform,background-color] duration-300 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-90">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        </button>
+        <button type="button" aria-label="Bag" class="grid h-8 w-8 place-items-center rounded-full transition-[transform,background-color] duration-300 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-90">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Promo bar -->
+  <div class="bg-white">
+    <p class="mx-auto max-w-[1280px] px-4 py-3 text-center text-[13px] text-ink">
+      Placeholder promo line with a financing offer and a cashback offer on selected products.
+      <a href="#top" class="ml-1 text-accent transition-[color,transform] duration-300 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">See offers</a>
+    </p>
+  </div>
+
+  <main id="top">
+
+    <!-- Hero header -->
+    <section class="lotus-glow relative overflow-hidden">
+      <div class="mx-auto grid max-w-[1280px] grid-cols-1 gap-8 px-4 pb-10 pt-12 sm:px-6 md:grid-cols-3 md:pt-14">
+        <div class="md:col-span-1">
+          <h1 class="headline-gradient text-[56px] font-semibold leading-none tracking-[-0.02em] md:text-[72px]">Store</h1>
+        </div>
+        <div class="flex items-center justify-center md:col-span-1">
+          <div aria-hidden="true" class="hero-orb h-56 w-56 rounded-full md:h-72 md:w-72"></div>
+        </div>
+        <div class="text-left md:col-span-1 md:text-right">
+          <p class="text-[28px] font-semibold leading-tight tracking-[-0.01em] text-ink md:text-[32px]">Placeholder tagline for the store header.</p>
+          <ul class="mt-4 space-y-2 text-[14px]">
+            <li><a href="#top" class="text-accent transition-[color,transform] duration-300 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">Talk to a specialist &rsaquo;</a></li>
+            <li><a href="#top" class="text-accent transition-[color,transform] duration-300 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-95">Find a location &rsaquo;</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category row -->
+    <nav aria-label="Categories" class="mx-auto max-w-[1280px] px-4 sm:px-6">
+      <ul class="no-scrollbar flex gap-8 overflow-x-auto py-6 md:justify-start">
+        <li><a href="#top" class="group flex min-w-[92px] flex-col items-center gap-3 rounded-xl p-2 text-[14px] outline-none transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent active:scale-95"><img src="https://placehold.co/120x96/FFFFFF/1D1D1F?text=A" alt="" width="120" height="96" class="h-24 w-auto object-contain transition-transform duration-500 ease-spring group-hover:scale-105" /><span>Category A</span></a></li>
+        <li><a href="#top" class="group flex min-w-[92px] flex-col items-center gap-3 rounded-xl p-2 text-[14px] outline-none transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent active:scale-95"><img src="https://placehold.co/120x96/FFFFFF/1D1D1F?text=B" alt="" width="120" height="96" class="h-24 w-auto object-contain transition-transform duration-500 ease-spring group-hover:scale-105" /><span>Category B</span></a></li>
+        <li><a href="#top" class="group flex min-w-[92px] flex-col items-center gap-3 rounded-xl p-2 text-[14px] outline-none transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent active:scale-95"><img src="https://placehold.co/120x96/FFFFFF/1D1D1F?text=C" alt="" width="120" height="96" class="h-24 w-auto object-contain transition-transform duration-500 ease-spring group-hover:scale-105" /><span>Category C</span></a></li>
+        <li><a href="#top" class="group flex min-w-[92px] flex-col items-center gap-3 rounded-xl p-2 text-[14px] outline-none transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent active:scale-95"><img src="https://placehold.co/120x96/FFFFFF/1D1D1F?text=D" alt="" width="120" height="96" class="h-24 w-auto object-contain transition-transform duration-500 ease-spring group-hover:scale-105" /><span>Category D</span></a></li>
+        <li><a href="#top" class="group flex min-w-[92px] flex-col items-center gap-3 rounded-xl p-2 text-[14px] outline-none transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent active:scale-95"><img src="https://placehold.co/120x96/FFFFFF/1D1D1F?text=E" alt="" width="120" height="96" class="h-24 w-auto object-contain transition-transform duration-500 ease-spring group-hover:scale-105" /><span>Category E</span></a></li>
+        <li><a href="#top" class="group flex min-w-[92px] flex-col items-center gap-3 rounded-xl p-2 text-[14px] outline-none transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent active:scale-95"><img src="https://placehold.co/120x96/FFFFFF/1D1D1F?text=F" alt="" width="120" height="96" class="h-24 w-auto object-contain transition-transform duration-500 ease-spring group-hover:scale-105" /><span>Category F</span></a></li>
+        <li><a href="#top" class="group flex min-w-[92px] flex-col items-center gap-3 rounded-xl p-2 text-[14px] outline-none transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-accent active:scale-95"><img src="https://placehold.co/120x96/FFFFFF/1D1D1F?text=G" alt="" width="120" height="96" class="h-24 w-auto object-contain transition-transform duration-500 ease-spring group-hover:scale-105" /><span>Category G</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- The latest -->
+    <section class="mx-auto mt-6 max-w-[1280px] px-4 sm:px-6" aria-labelledby="latest-title">
+      <h2 id="latest-title" class="text-[28px] font-semibold tracking-[-0.01em] md:text-[32px]">
+        <span class="headline-gradient">The latest.</span>
+        <span class="text-muted">Placeholder subheading for new arrivals.</span>
+      </h2>
+
+      <ul class="no-scrollbar mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[480px] w-[340px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">New</span>
+            <span class="mt-2 text-[24px] font-semibold leading-tight tracking-[-0.01em]">Product One</span>
+            <span class="mt-2 text-[14px] text-ink">Short placeholder description.</span>
+            <span class="mt-1 text-[13px] text-muted">From placeholder price</span>
+            <img src="https://placehold.co/260x260/F5F5F7/1D1D1F?text=Product+1" alt="" width="260" height="260" class="mx-auto mt-auto h-56 w-56 object-contain transition-transform duration-500 ease-spring group-hover:scale-105" />
+          </a>
+        </li>
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[480px] w-[340px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">New</span>
+            <span class="mt-2 text-[24px] font-semibold leading-tight tracking-[-0.01em]">Product Two</span>
+            <span class="mt-2 text-[14px] text-ink">Short placeholder description that wraps.</span>
+            <span class="mt-1 text-[13px] text-muted">From placeholder price</span>
+            <img src="https://placehold.co/260x260/F5F5F7/1D1D1F?text=Product+2" alt="" width="260" height="260" class="mx-auto mt-auto h-56 w-56 object-contain transition-transform duration-500 ease-spring group-hover:scale-105" />
+          </a>
+        </li>
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[480px] w-[340px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-peach">Pre-order</span>
+            <span class="mt-2 text-[24px] font-semibold leading-tight tracking-[-0.01em]">Product Three</span>
+            <span class="mt-2 text-[14px] text-ink">Short placeholder description.</span>
+            <span class="mt-1 text-[13px] text-muted">Placeholder price</span>
+            <img src="https://placehold.co/260x260/F5F5F7/1D1D1F?text=Product+3" alt="" width="260" height="260" class="mx-auto mt-auto h-56 w-56 object-contain transition-transform duration-500 ease-spring group-hover:scale-105" />
+          </a>
+        </li>
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[480px] w-[340px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">New</span>
+            <span class="mt-2 text-[24px] font-semibold leading-tight tracking-[-0.01em]">Product Four</span>
+            <span class="mt-2 text-[14px] text-ink">Short placeholder description.</span>
+            <span class="mt-1 text-[13px] text-muted">From placeholder price</span>
+            <img src="https://placehold.co/260x260/F5F5F7/1D1D1F?text=Product+4" alt="" width="260" height="260" class="mx-auto mt-auto h-56 w-56 object-contain transition-transform duration-500 ease-spring group-hover:scale-105" />
+          </a>
+        </li>
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[480px] w-[340px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">New</span>
+            <span class="mt-2 text-[24px] font-semibold leading-tight tracking-[-0.01em]">Product Five</span>
+            <span class="mt-2 text-[14px] text-ink">Short placeholder description.</span>
+            <span class="mt-1 text-[13px] text-muted">From placeholder price</span>
+            <img src="https://placehold.co/260x260/F5F5F7/1D1D1F?text=Product+5" alt="" width="260" height="260" class="mx-auto mt-auto h-56 w-56 object-contain transition-transform duration-500 ease-spring group-hover:scale-105" />
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- The difference -->
+    <section class="mx-auto mt-10 max-w-[1280px] px-4 pb-20 sm:px-6" aria-labelledby="difference-title">
+      <h2 id="difference-title" class="text-[28px] font-semibold tracking-[-0.01em] md:text-[32px]">
+        <span class="headline-gradient">The difference.</span>
+        <span class="text-muted">Placeholder subheading for store perks.</span>
+      </h2>
+
+      <ul class="no-scrollbar mt-6 grid snap-x gap-4 overflow-x-auto sm:grid-cols-2 lg:grid-cols-4">
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[300px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">Perk label</span>
+            <span class="mt-3 text-[22px] font-semibold leading-snug tracking-[-0.01em]">Placeholder perk headline in two lines</span>
+          </a>
+        </li>
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[300px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">Perk label</span>
+            <span class="mt-3 text-[22px] font-semibold leading-snug tracking-[-0.01em]">Placeholder perk headline in two lines</span>
+          </a>
+        </li>
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[300px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">Perk label</span>
+            <span class="mt-3 text-[22px] font-semibold leading-snug tracking-[-0.01em]">Placeholder perk headline in two lines</span>
+          </a>
+        </li>
+        <li class="snap-start">
+          <a href="#top" class="group flex h-[300px] flex-col rounded-[22px] bg-white p-7 shadow-card transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1 hover:shadow-cardHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]">
+            <span class="text-[12px] font-semibold uppercase tracking-[0.04em] text-rose">Perk label</span>
+            <span class="mt-3 text-[22px] font-semibold leading-snug tracking-[-0.01em]">Placeholder perk headline in two lines</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="border-t border-black/5 bg-white">
+    <p class="mx-auto max-w-[1280px] px-4 py-6 text-[12px] text-muted sm:px-6">Placeholder footer text. &copy; 2026 Example Store.</p>
+  </footer>
+
+</body>
+</html>

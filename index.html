@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation Society</title>
+  <meta name="description" content="AI Automation Society: build the future with AI automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Brand palette from the AIS brand guide. Do not add colors outside these values.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#071226',
+            blue: '#4FC1FF',
+            orange: '#FFA41F'
+          },
+          fontFamily: {
+            mono: ['"Roboto Mono"', 'ui-monospace', 'monospace'],
+            sans: ['Montserrat', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            lift: '0 1px 0 rgba(79,193,255,0.08) inset, 0 10px 24px -14px rgba(3,8,18,0.9), 0 30px 60px -36px rgba(79,193,255,0.22)',
+            float: '0 1px 0 rgba(79,193,255,0.12) inset, 0 18px 36px -18px rgba(3,8,18,0.9), 0 50px 90px -40px rgba(79,193,255,0.30)'
+          },
+          transitionTimingFunction: {
+            spring: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #071226;
+      color: #FFFFFF;
+      font-family: 'Montserrat', system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-mono { letter-spacing: -0.03em; }
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+    .hero-glow {
+      background:
+        radial-gradient(55% 50% at 15% 10%, rgba(79,193,255,0.22) 0%, rgba(79,193,255,0) 60%),
+        radial-gradient(40% 40% at 90% 30%, rgba(255,164,31,0.14) 0%, rgba(255,164,31,0) 65%),
+        radial-gradient(70% 60% at 50% 110%, rgba(79,193,255,0.12) 0%, rgba(79,193,255,0) 70%),
+        #071226;
+    }
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: rise 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .reveal-2 { animation-delay: 0.12s; }
+    .reveal-3 { animation-delay: 0.24s; }
+    .reveal-4 { animation-delay: 0.36s; }
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-white/5 bg-navy/75 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <a href="#top" class="group flex items-center gap-2.5 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy">
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-blue font-mono text-sm font-bold text-navy shadow-lift transition-transform duration-300 ease-spring group-hover:-rotate-6 group-active:scale-95">AI</span>
+        <span class="font-mono text-[15px] font-bold tracking-[-0.02em]">AI Automation Society</span>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <a href="#about" class="rounded-full px-3.5 py-2 text-sm text-white/70 transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">About</a>
+        <a href="#benefits" class="rounded-full px-3.5 py-2 text-sm text-white/70 transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">Benefits</a>
+        <a href="#how" class="rounded-full px-3.5 py-2 text-sm text-white/70 transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">How It Works</a>
+        <a href="#join" class="rounded-full px-3.5 py-2 text-sm text-white/70 transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">Join</a>
+      </nav>
+
+      <a href="#join" class="inline-flex items-center rounded-full bg-blue px-4 py-2 text-sm font-semibold text-navy shadow-lift transition-[transform,background-color,box-shadow] duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-float focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy active:translate-y-0 active:scale-95">
+        Join now
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- 1. Hero -->
+    <section class="hero-glow grain relative isolate overflow-hidden">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-24 pt-20 sm:px-6 md:pt-28 lg:grid-cols-12 lg:gap-10 lg:pb-32">
+        <div class="lg:col-span-7">
+          <p class="reveal inline-flex items-center gap-2 rounded-full border border-blue/25 bg-blue/5 px-3 py-1 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-blue">
+            <span class="h-1.5 w-1.5 rounded-full bg-blue shadow-[0_0_12px_rgba(79,193,255,0.9)]"></span>
+            AI Automation Society
+          </p>
+          <h1 class="reveal reveal-2 font-mono mt-6 text-[2.5rem] font-bold leading-[1.05] tracking-[-0.03em] sm:text-6xl lg:text-[4.25rem]">
+            Build the Future with <span class="text-blue">AI Automation</span>
+          </h1>
+          <p class="reveal reveal-3 mt-6 max-w-xl text-base leading-[1.7] text-white/70 sm:text-lg">
+            Join a community of builders automating real work. Learn the workflows, share what works and ship systems that run without you.
+          </p>
+          <div class="reveal reveal-4 mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#join" class="inline-flex items-center justify-center gap-2 rounded-full bg-blue px-6 py-3.5 text-base font-semibold text-navy shadow-float transition-[transform,background-color,box-shadow] duration-300 ease-spring hover:-translate-y-1 hover:bg-[#6CCDFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy active:translate-y-0 active:scale-[0.98]">
+              Join the society
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#how" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.03] px-6 py-3.5 text-base font-semibold text-white transition-[transform,background-color,border-color] duration-300 ease-spring hover:-translate-y-1 hover:border-white/30 hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy active:translate-y-0 active:scale-[0.98]">
+              How it works
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-3 relative lg:col-span-5">
+          <div class="absolute -inset-6 -z-10 rounded-[2rem] bg-[radial-gradient(closest-side,rgba(79,193,255,0.18),rgba(79,193,255,0))]"></div>
+          <div class="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0B1B33] shadow-float">
+            <div class="relative">
+              <img src="https://placehold.co/900x720/0B1B33/4FC1FF?text=AI+Automation" alt="Placeholder hero image" width="900" height="720" class="block h-auto w-full object-cover mix-blend-luminosity opacity-90" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+              <div class="pointer-events-none absolute inset-0 bg-blue/10 mix-blend-multiply"></div>
+            </div>
+            <div class="glass absolute bottom-4 left-4 right-4 rounded-2xl p-4 shadow-lift">
+              <div class="flex items-center justify-between">
+                <p class="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-white/60">This week</p>
+                <span class="rounded-full bg-orange/15 px-2 py-0.5 text-xs font-semibold text-orange">Live</span>
+              </div>
+              <p class="font-mono mt-2 text-lg font-semibold tracking-[-0.02em]">Invoice triage agent shipped</p>
+              <p class="mt-1 text-sm text-white/60">Posted by a member</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Stats -->
+    <section aria-label="Community highlights" class="relative border-y border-white/5 bg-[#0A1A33]">
+      <dl class="mx-auto grid max-w-6xl grid-cols-2 gap-px bg-white/5 md:grid-cols-4">
+        <div class="bg-[#0A1A33] px-6 py-8 text-center">
+          <dt class="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-white/60">Members</dt>
+          <dd class="font-mono mt-2 text-3xl font-bold tracking-[-0.03em] text-blue">00,000+</dd>
+        </div>
+        <div class="bg-[#0A1A33] px-6 py-8 text-center">
+          <dt class="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-white/60">Workflows shared</dt>
+          <dd class="font-mono mt-2 text-3xl font-bold tracking-[-0.03em] text-blue">0,000</dd>
+        </div>
+        <div class="bg-[#0A1A33] px-6 py-8 text-center">
+          <dt class="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-white/60">Live sessions / month</dt>
+          <dd class="font-mono mt-2 text-3xl font-bold tracking-[-0.03em] text-blue">00</dd>
+        </div>
+        <div class="bg-[#0A1A33] px-6 py-8 text-center">
+          <dt class="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-white/60">Countries</dt>
+          <dd class="font-mono mt-2 text-3xl font-bold tracking-[-0.03em] text-blue">00</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 3. About -->
+    <section id="about" class="relative bg-navy" style="padding-block: clamp(5rem, 10vw, 8rem)">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="max-w-2xl">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-blue">About the society</p>
+          <h2 class="font-mono mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.03em] sm:text-5xl">Practical AI, built by the people who use it.</h2>
+          <p class="mt-5 text-base leading-[1.7] text-white/70 sm:text-lg">No hype. Just members sharing the workflows, prompts and tools that work in real businesses, with the steps to copy them.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Benefits: 6-card grid -->
+    <section id="benefits" class="relative border-t border-white/5 bg-[#0A1A33]" style="padding-block: clamp(5rem, 10vw, 8rem)">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-blue">Benefits</p>
+        <h2 class="font-mono mt-4 max-w-2xl text-4xl font-bold leading-[1.08] tracking-[-0.03em] sm:text-5xl">Everything you need to automate.</h2>
+
+        <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="group rounded-3xl border border-white/[0.07] bg-navy p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5 focus-within:shadow-float">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl bg-blue text-navy transition-transform duration-500 ease-spring group-hover:scale-110">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+            </div>
+            <h3 class="font-mono mt-6 text-lg font-bold tracking-[-0.02em]">Workflows that run</h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-white/70">Tested automations with steps, tools and failure cases documented.</p>
+          </article>
+
+          <article class="group rounded-3xl border border-white/[0.07] bg-navy p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5 focus-within:shadow-float">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl bg-orange text-navy transition-transform duration-500 ease-spring group-hover:scale-110">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.6-3.2 3-5 6-5s5.4 1.8 6 5M15 15c2.6 0 4.6 1.6 5.2 4"/></svg>
+            </div>
+            <h3 class="font-mono mt-6 text-lg font-bold tracking-[-0.02em]">Peer feedback</h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-white/70">Get your build reviewed by operators who have shipped similar systems.</p>
+          </article>
+
+          <article class="group rounded-3xl border border-white/[0.07] bg-navy p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5 focus-within:shadow-float">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl bg-blue text-navy transition-transform duration-500 ease-spring group-hover:scale-110">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/></svg>
+            </div>
+            <h3 class="font-mono mt-6 text-lg font-bold tracking-[-0.02em]">Live build sessions</h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-white/70">Weekly build sessions and office hours to keep your project moving.</p>
+          </article>
+
+          <article class="group rounded-3xl border border-white/[0.07] bg-navy p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5 focus-within:shadow-float">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl bg-orange text-navy transition-transform duration-500 ease-spring group-hover:scale-110">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg>
+            </div>
+            <h3 class="font-mono mt-6 text-lg font-bold tracking-[-0.02em]">Shared library</h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-white/70">Templates and prompts from members, searchable and ready to copy.</p>
+          </article>
+
+          <article class="group rounded-3xl border border-white/[0.07] bg-navy p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5 focus-within:shadow-float">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl bg-blue text-navy transition-transform duration-500 ease-spring group-hover:scale-110">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v6c0 4.5-3.4 7.7-8 8-4.6-.3-8-3.5-8-8V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3 class="font-mono mt-6 text-lg font-bold tracking-[-0.02em]">Safe by design</h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-white/70">Guides on access control, data handling and review before anything goes live.</p>
+          </article>
+
+          <article class="group rounded-3xl border border-white/[0.07] bg-navy p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5 focus-within:shadow-float">
+            <div class="grid h-11 w-11 place-items-center rounded-2xl bg-orange text-navy transition-transform duration-500 ease-spring group-hover:scale-110">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="M8 15l4-4 3 3 5-6"/></svg>
+            </div>
+            <h3 class="font-mono mt-6 text-lg font-bold tracking-[-0.02em]">Measured results</h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-white/70">Track hours saved and errors caught so you know what the automation is worth.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. How It Works: 4-step vertical flow, orange accent on step 4 -->
+    <section id="how" class="relative overflow-hidden border-t border-white/5 bg-navy" style="padding-block: clamp(5rem, 10vw, 8rem)">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <div class="text-center">
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-blue">How it works</p>
+          <h2 class="font-mono mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.03em] sm:text-5xl">From idea to running system.</h2>
+        </div>
+
+        <ol class="relative mt-16 space-y-10">
+          <!-- connector line -->
+          <span aria-hidden="true" class="absolute left-[27px] top-8 bottom-8 w-px bg-gradient-to-b from-blue/60 via-blue/30 to-orange/60"></span>
+
+          <li class="group relative flex gap-6">
+            <span class="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-blue/40 bg-navy font-mono text-lg font-bold text-blue shadow-lift transition-transform duration-500 ease-spring group-hover:scale-105">01</span>
+            <div class="pt-1">
+              <h3 class="font-mono text-xl font-bold tracking-[-0.02em]">Pick one repeated task</h3>
+              <p class="mt-2 text-[15px] leading-[1.7] text-white/70">Choose the task that eats the most hours each week and write down its steps.</p>
+            </div>
+          </li>
+          <li class="group relative flex gap-6">
+            <span class="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-blue/40 bg-navy font-mono text-lg font-bold text-blue shadow-lift transition-transform duration-500 ease-spring group-hover:scale-105">02</span>
+            <div class="pt-1">
+              <h3 class="font-mono text-xl font-bold tracking-[-0.02em]">Build it with a peer</h3>
+              <p class="mt-2 text-[15px] leading-[1.7] text-white/70">Share your draft in the build channel and get it reviewed before you connect real data.</p>
+            </div>
+          </li>
+          <li class="group relative flex gap-6">
+            <span class="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-blue/40 bg-navy font-mono text-lg font-bold text-blue shadow-lift transition-transform duration-500 ease-spring group-hover:scale-105">03</span>
+            <div class="pt-1">
+              <h3 class="font-mono text-xl font-bold tracking-[-0.02em]">Test it in the open</h3>
+              <p class="mt-2 text-[15px] leading-[1.7] text-white/70">Run it on sample work, log the failures and fix them with the community's help.</p>
+            </div>
+          </li>
+          <li class="group relative flex gap-6">
+            <span class="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-orange/50 bg-navy font-mono text-lg font-bold text-orange shadow-lift transition-transform duration-500 ease-spring group-hover:scale-105">04</span>
+            <div class="pt-1">
+              <h3 class="font-mono text-xl font-bold tracking-[-0.02em]">Ship and share it back</h3>
+              <p class="mt-2 text-[15px] leading-[1.7] text-white/70">Put it into production and publish the template so the next member starts further ahead.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. Testimonials: 3 glass-panel quote cards -->
+    <section id="stories" class="relative border-t border-white/5 bg-[#0A1A33]" style="padding-block: clamp(5rem, 10vw, 8rem)">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-blue">Testimonials</p>
+        <h2 class="font-mono mt-4 max-w-2xl text-4xl font-bold leading-[1.08] tracking-[-0.03em] sm:text-5xl">Members who built it.</h2>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-3">
+          <figure class="glass flex flex-col rounded-3xl p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5">
+            <blockquote class="text-[15px] leading-[1.7] text-white/85">"Placeholder quote about turning a weekly reporting chore into an automated workflow."</blockquote>
+            <figcaption class="mt-6 border-t border-white/10 pt-4 text-sm">
+              <span class="font-semibold text-white">Placeholder Name</span>
+              <span class="block text-white/60">Operations lead</span>
+            </figcaption>
+          </figure>
+          <figure class="glass flex flex-col rounded-3xl p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5">
+            <blockquote class="text-[15px] leading-[1.7] text-white/85">"Placeholder quote about getting feedback from a peer guild before going live."</blockquote>
+            <figcaption class="mt-6 border-t border-white/10 pt-4 text-sm">
+              <span class="font-semibold text-white">Placeholder Name</span>
+              <span class="block text-white/60">Founder</span>
+            </figcaption>
+          </figure>
+          <figure class="glass flex flex-col rounded-3xl p-7 shadow-lift transition-[transform,box-shadow] duration-500 ease-spring hover:-translate-y-1.5 hover:shadow-float focus-within:-translate-y-1.5">
+            <blockquote class="text-[15px] leading-[1.7] text-white/85">"Placeholder quote about the library templates that saved a team a full sprint."</blockquote>
+            <figcaption class="mt-6 border-t border-white/10 pt-4 text-sm">
+              <span class="font-semibold text-white">Placeholder Name</span>
+              <span class="block text-white/60">Engineer</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Join CTA: centered, floating logo, email input + button -->
+    <section id="join" class="hero-glow grain relative isolate overflow-hidden border-t border-white/5" style="padding-block: clamp(5rem, 10vw, 8rem)">
+      <div class="relative mx-auto max-w-2xl px-4 text-center sm:px-6">
+        <div class="mx-auto grid h-16 w-16 animate-[float_6s_ease-in-out_infinite] place-items-center rounded-2xl bg-blue font-mono text-lg font-bold text-navy shadow-float">AI</div>
+        <h2 class="font-mono mt-8 text-4xl font-bold leading-[1.08] tracking-[-0.03em] sm:text-5xl">Join the society.</h2>
+        <p class="mx-auto mt-5 max-w-xl text-base leading-[1.7] text-white/70 sm:text-lg">Get the workflows, the people and the push to ship your first automation.</p>
+
+        <form class="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row" action="#join" onsubmit="return false;">
+          <label for="email" class="sr-only">Email address</label>
+          <input id="email" type="email" name="email" required placeholder="you@company.com" class="glass h-12 flex-1 rounded-full px-5 text-sm text-white placeholder:text-white/40 outline-none transition-[box-shadow,border-color] duration-300 focus:border-blue focus:shadow-[0_0_0_3px_rgba(79,193,255,0.25)]" />
+          <button type="submit" class="h-12 rounded-full bg-blue px-6 text-sm font-semibold text-navy shadow-float transition-[transform,background-color,box-shadow] duration-300 ease-spring hover:-translate-y-0.5 hover:bg-[#6CCDFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy active:translate-y-0 active:scale-[0.98]">
+            Join now
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer: minimal, logo, links, copyright -->
+  <footer class="border-t border-white/5 bg-navy">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 py-10 sm:px-6 md:flex-row md:justify-between">
+      <a href="#top" class="font-mono text-sm font-bold tracking-[-0.02em] rounded-sm transition-[color,transform] duration-300 ease-spring hover:text-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">AI Automation Society</a>
+      <nav aria-label="Footer" class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/70">
+        <a href="#about" class="rounded-sm transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">About</a>
+        <a href="#benefits" class="rounded-sm transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">Benefits</a>
+        <a href="#how" class="rounded-sm transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">How It Works</a>
+        <a href="#join" class="rounded-sm transition-[color,transform] duration-300 ease-spring hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue active:scale-95">Join</a>
+      </nav>
+    </div>
+    <div class="border-t border-white/5">
+      <p class="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-white/50 sm:px-6">&copy; 2026 AI Automation Society. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
